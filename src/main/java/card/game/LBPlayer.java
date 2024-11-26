@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -65,6 +64,9 @@ public class LBPlayer {
         printHand();
         String response = scanner.nextLine();
         String[] tokens = response.strip().split(" ");
+        if (tokens[0].equals("call")) {
+            return null;
+        }
         ArrayList<Color> result = new ArrayList<>();
         ArrayList<Integer> indices = new ArrayList<>();
         for (String token: tokens) {
