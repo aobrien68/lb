@@ -36,4 +36,8 @@ public class LBPlayer {
         shots = 17;
         scanner.close();
     }
+
+    public void send(String msg) {
+        writer.println(msg);
+    }
 }
