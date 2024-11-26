@@ -12,6 +12,6 @@ public class LBClient extends Duplexer{
 
 
     public static void main(String[] args) throws IOException {
-        //LBClient client = new LBClient(new Socket("localhost", 54321));
+        LBClient client = new LBClient(new Socket("localhost", 54321));
     }
 }

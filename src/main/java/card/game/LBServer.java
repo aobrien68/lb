@@ -109,7 +109,9 @@ public class LBServer {
         LBServer server = new LBServer(socket);
         while (server.getAliveCount() > 1) {
             server.dealHands();
-            //while ()
+            // while () {
+
+            // }
         }
     }
 }

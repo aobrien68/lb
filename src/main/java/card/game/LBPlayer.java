@@ -3,6 +3,9 @@ package card.game;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,6 +44,7 @@ public class LBPlayer {
 
     public void send(String msg) {
         writer.println(msg);
+        writer.flush();
     }
 
     public void setHand(List<Color> hand) {
@@ -51,5 +55,25 @@ public class LBPlayer {
         socket.close();
         scanner.close();
         writer.close();
+    }
+
+    public void printHand() {
+        send(hand.toString());
+    }
+
+    public List<Color> getTurn() {
+        printHand();
+        String response = scanner.nextLine();
+        String[] tokens = response.strip().split(" ");
+        ArrayList<Color> result = new ArrayList<>();
+        ArrayList<Integer> indices = new ArrayList<>();
+        for (String token: tokens) {
+            indices.add(Integer.parseInt(token));
+        }
+        Collections.sort(indices);
+        for (int i=indices.size()-1; i>=0; i--) {
+            result.add(hand.remove(i));
+        }
+        return result;
     }
 }
