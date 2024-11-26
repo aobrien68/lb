@@ -3,6 +3,7 @@ package card.game;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.List;
 import java.util.Scanner;
 
 public class LBPlayer {
@@ -10,6 +11,7 @@ public class LBPlayer {
     private Scanner scanner;
     private PrintWriter writer;
     private byte shots;
+    private List<Color> hand;
 
 
 
@@ -39,5 +41,15 @@ public class LBPlayer {
 
     public void send(String msg) {
         writer.println(msg);
+    }
+
+    public void setHand(List<Color> hand) {
+        this.hand = hand;
+    }
+
+    public void close() throws IOException {
+        socket.close();
+        scanner.close();
+        writer.close();
     }
 }
